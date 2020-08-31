@@ -12,6 +12,7 @@ body {
 .container {
   background: #19294d;
 }
+
 #add_book {
   margin: 2rem 2.9rem;
   font-size: 5rem;
@@ -47,16 +48,28 @@ body {
   position: absolute;
   margin-left: 780px;
   margin-top: 40px;
+  justify-content: space-around;
 }
 
 .form_popup input {
-  margin: 20px;
+  margin: 0 20px 0 20px;
   padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .form_popup label {
   margin: 20px 0 20px 20px;
   color: white;
+}
+
+#submit {
+  color: black;
+  outline: none;
+}
+
+#submit:hover {
+  transform: scale(1.02);
 }
 
 .book_cards {

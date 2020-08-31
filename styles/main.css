@@ -5,17 +5,31 @@
 }
 
 body {
-  background: #003049;
+  background: #19294d;
   font-size: 16px;
 }
 
+.container {
+  background: #19294d;
+}
 #add_book {
   margin: 2rem 2.9rem;
   font-size: 5rem;
+  border-radius: 50%;
   border: none;
   background: transparent;
-  cursor: pointer;
   color: aqua;
+}
+
+#add_book:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
+#add_book:focus {
+  outline: 0;
+  box-shadow: 0 0 3pt 2.9pt aqua;
+  transform: scale(1.1);
 }
 
 .form_section {
@@ -23,14 +37,16 @@ body {
 }
 
 .form_popup {
-  margin: 0 auto;
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   background: #3d5a80;
   width: 280px;
   height: 285px;
   border-radius: 10px;
+  transform: scale(1.4);
+  position: absolute;
+  margin-left: 780px;
+  margin-top: 40px;
 }
 
 .form_popup input {
@@ -43,6 +59,72 @@ body {
   color: white;
 }
 
-#title {
-  margin-top: 30px;
+.book_cards {
+  background: #14213d;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  background: #f29602;
+  border-radius: 15px;
+  width: 280px;
+  height: 330px;
+  margin: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card:hover {
+  transform: scale(1.04);
+}
+
+.options {
+  width: 280px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.remove {
+  background: black;
+  color: white;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  border: none;
+  margin-right: 7rem;
+  outline: none;
+}
+
+.toggle_read {
+  font-size: 1.4rem;
+  background: transparent;
+  border: none;
+  color: black;
+  margin-bottom: 22px;
+  outline: none;
+}
+
+.remove:hover {
+  transform: scale(1.1);
+}
+
+.toggle_read:hover {
+  transform: scale(1.2);
+}
+
+.remove {
+  margin-bottom: 1.7rem;
+}
+
+#author {
+  margin-bottom: 0.4rem;
+}
+
+#pages {
+  margin-bottom: 1.4rem;
 }

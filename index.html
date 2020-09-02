@@ -7,20 +7,37 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
-    <section class="container">
-      <button id="add_book">+</button>
-      <section class="form_section">
-        <form action="#" class="form_popup">
-          <input type="text" id="form_title" placeholder="Book Title" />
-          <input type="text" id="form_author" placeholder="Book Author" />
-          <input type="number" id="form_pages" placeholder="Book Pages" />
-          <div class="item">
-            <label for="isRead">Have you read the book?</label>
-            <input type="checkbox" id="isRead" />
-          </div>
-          <input type="submit" id="submit" value="Add Book" />
-        </form>
-      </section>
+    <button id="add_book">+</button>
+    <section class="form_section">
+      <form action="" class="form_popup">
+        <input
+          name="title"
+          type="text"
+          id="form_title"
+          placeholder="Book Title"
+          required
+        />
+        <input
+          name="author"
+          type="text"
+          id="form_author"
+          placeholder="Book Author"
+          required
+        />
+        <input
+          name="pages"
+          type="number"
+          id="form_pages"
+          placeholder="Book Pages"
+          required
+        />
+        <div class="item">
+          <label for="isRead">Have you read the book?</label>
+          <input name="checkbox" type="checkbox" id="isRead" />
+        </div>
+        <input type="submit" id="submit" value="Add Book" />
+        <span class="close_btn">X</span>
+      </form>
     </section>
 
     <section class="book_cards">

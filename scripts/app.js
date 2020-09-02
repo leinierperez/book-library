@@ -1,12 +1,4 @@
-Book1 = new Book("rambo", "rambot", 325, false);
-Book2 = new Book("rbncvn", "ramotnbmbn", 354, true);
-Book3 = new Book("ramgfdg", "rboarew", 341, true);
-
 let myLibrary = [];
-
-// myLibrary.push(Book1);
-// myLibrary.push(Book2);
-// myLibrary.push(Book3);
 
 function Book(title, author, pages, isRead) {
   this.title = title;
@@ -17,18 +9,9 @@ function Book(title, author, pages, isRead) {
 
 const btn = document.getElementById("add_book");
 const formSection = document.querySelector(".form_section");
-const removeBook = document.querySelector(".remove");
-const readToggle = document.querySelector(".toggle_read");
 const form = document.querySelector(".form_popup");
-const submit = document.getElementById("submit");
-const formTitle = document.getElementById("form_title");
-const formAuthor = document.getElementById("form_author");
-const formPages = document.getElementById("form_pages");
-const readCheckBox = document.getElementById("isRead");
-const cardTitle = document.getElementById("title");
-const cardAuthor = document.getElementById("author");
-const cardPages = document.getElementById("pages");
 const closeBtn = document.querySelector(".close_btn");
+const bookCards = document.querySelector(".book_cards");
 
 btn.addEventListener("click", (e) => {
   formSection.classList.toggle("form_section");
@@ -39,25 +22,51 @@ closeBtn.addEventListener("click", (e) => {
 });
 
 function displayBook() {
+  let cardSection = document.createElement("section");
+  cardSection.className = "card";
+  let options = document.createElement("div");
+  options.className = "options";
+  let removeBtn = document.createElement("button");
+  removeBtn.textContent = "x";
+  removeBtn.className = "remove";
+  let readToggleBtn = document.createElement("button");
+  readToggleBtn.textContent = "Read";
+  readToggleBtn.className = "toggle_read";
+  let cardTitle = document.createElement("h1");
+  cardTitle.id = "title";
+  let cardAuthor = document.createElement("h3");
+  cardAuthor.id = "author";
+  let cardPages = document.createElement("h4");
+  cardPages.id = "pages";
+
   for (let i = 0; i < myLibrary.length; i++) {
+    cardSection.appendChild(options);
+    options.appendChild(removeBtn);
+    options.appendChild(readToggleBtn);
+    cardSection.appendChild(cardTitle);
+    cardSection.appendChild(cardAuthor);
+    cardSection.appendChild(cardPages);
+    bookCards.appendChild(cardSection);
+
     cardTitle.textContent = myLibrary[i].title;
     cardAuthor.textContent = myLibrary[i].author;
     cardPages.textContent = myLibrary[i].pages;
+    cardSection.setAttribute("bookIndex", i);
     if (myLibrary[i].isRead) {
-      readToggle.style.color = "black";
+      readToggleBtn.style.color = "black";
     } else {
-      readToggle.style.color = "red";
+      readToggleBtn.style.color = "red";
     }
   }
 }
 
 form.addEventListener("submit", (e) => {
+  e.preventDefault();
   let titleValue;
   let authorValue;
   let pagesValue;
   let checkBox;
-  formSection.style.display = "none";
-  e.preventDefault();
+  formSection.classList.toggle("form_section");
   const formValues = new FormData(e.target);
   [...formValues.entries()].forEach(([key, val]) => {
     if (key === "title") {
@@ -72,6 +81,7 @@ form.addEventListener("submit", (e) => {
     if (key === "checkbox") {
       if (val === "on") checkBox = true;
     } else checkBox = false;
+    form.reset();
   });
   let book = new Book(titleValue, authorValue, pagesValue, checkBox);
   myLibrary.push(book);

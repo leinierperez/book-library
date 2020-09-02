@@ -52,12 +52,19 @@ function displayBook() {
     cardAuthor.textContent = myLibrary[i].author;
     cardPages.textContent = myLibrary[i].pages;
     cardSection.setAttribute("bookIndex", i);
+    removeBtn.setAttribute("btnBookIndex", i);
+    readToggleBtn.setAttribute("readBookIndex", i);
     if (myLibrary[i].isRead) {
       readToggleBtn.style.color = "black";
     } else {
       readToggleBtn.style.color = "red";
     }
   }
+  removeBtn.addEventListener("click", (e) => {
+    let index = e.target.getAttribute("btnBookIndex");
+    myLibrary.splice(index, 1);
+    cardSection.remove();
+  });
 }
 
 form.addEventListener("submit", (e) => {

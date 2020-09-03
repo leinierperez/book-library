@@ -12,6 +12,10 @@ const formSection = document.querySelector(".form_section");
 const form = document.querySelector(".form_popup");
 const closeBtn = document.querySelector(".close_btn");
 const bookCards = document.querySelector(".book_cards");
+const formTitle = document.getElementById("form_title");
+const formAuthor = document.getElementById("form_author");
+const formPages = document.getElementById("form_pages");
+const readCheckBox = document.getElementById("isRead");
 
 btn.addEventListener("click", (e) => {
   formSection.classList.toggle("form_section");
@@ -69,28 +73,17 @@ function displayBook() {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let titleValue;
-  let authorValue;
-  let pagesValue;
-  let checkBox;
+  let titleVal = formTitle.value;
+  let authorVal = formAuthor.value;
+  let pagesVal = formPages.value;
+  let isChecked;
+  if (readCheckBox.checked) {
+    isChecked = true;
+  } else isChecked = false;
+
+  let book = new Book(titleVal, authorVal, pagesVal, isChecked);
   formSection.classList.toggle("form_section");
-  const formValues = new FormData(e.target);
-  [...formValues.entries()].forEach(([key, val]) => {
-    if (key === "title") {
-      titleValue = val;
-    }
-    if (key === "author") {
-      authorValue = val;
-    }
-    if (key === "pages") {
-      pagesValue = val;
-    }
-    if (key === "checkbox") {
-      if (val === "on") checkBox = true;
-    } else checkBox = false;
-    form.reset();
-  });
-  let book = new Book(titleValue, authorValue, pagesValue, checkBox);
   myLibrary.push(book);
   displayBook();
+  form.reset();
 });

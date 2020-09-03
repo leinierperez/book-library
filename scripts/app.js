@@ -69,6 +69,17 @@ function displayBook() {
     myLibrary.splice(index, 1);
     cardSection.remove();
   });
+
+  readToggleBtn.addEventListener("click", (e) => {
+    let index = e.target.getAttribute("readBookIndex");
+    if (myLibrary[index].isRead) {
+      myLibrary[index].isRead = false;
+      readToggleBtn.style.color = "red";
+    } else {
+      myLibrary[index].isRead = true;
+      readToggleBtn.style.color = "black";
+    }
+  });
 }
 
 form.addEventListener("submit", (e) => {

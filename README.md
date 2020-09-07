@@ -6,4 +6,5 @@
 
 # View in Browser
 
-[Book Library](https://leinierperez.github.io/book-library/)
+- [Book Library](https://leinierperez.github.io/book-library/)
+- Will fix html/css in the future.

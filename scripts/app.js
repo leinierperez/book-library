@@ -55,7 +55,6 @@ function displayBook() {
     cardTitle.textContent = myLibrary[i].title;
     cardAuthor.textContent = myLibrary[i].author;
     cardPages.textContent = myLibrary[i].pages;
-    cardSection.setAttribute("bookIndex", i);
     removeBtn.setAttribute("btnBookIndex", i);
     readToggleBtn.setAttribute("readBookIndex", i);
     if (myLibrary[i].isRead) {
@@ -72,13 +71,9 @@ function displayBook() {
 
   readToggleBtn.addEventListener("click", (e) => {
     let index = e.target.getAttribute("readBookIndex");
-    if (myLibrary[index].isRead) {
-      myLibrary[index].isRead = false;
-      readToggleBtn.style.color = "red";
-    } else {
-      myLibrary[index].isRead = true;
-      readToggleBtn.style.color = "black";
-    }
+
+    myLibrary[index].isRead = !myLibrary[index].isRead;
+    readToggleBtn.style.color = myLibrary[index].isRead ? "black" : "red";
   });
 }
 
@@ -88,9 +83,7 @@ form.addEventListener("submit", (e) => {
   let authorVal = formAuthor.value;
   let pagesVal = formPages.value;
   let isChecked;
-  if (readCheckBox.checked) {
-    isChecked = true;
-  } else isChecked = false;
+  readCheckBox.checked ? (isChecked = true) : (isChecked = false);
 
   let book = new Book(titleVal, authorVal, pagesVal, isChecked);
   formSection.classList.toggle("form_section");

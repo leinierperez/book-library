@@ -1,10 +1,12 @@
 let myLibrary = [];
 
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
 }
 
 const btn = document.getElementById("add_book");
@@ -88,6 +90,7 @@ form.addEventListener("submit", (e) => {
   let book = new Book(titleVal, authorVal, pagesVal, isChecked);
   formSection.classList.toggle("form_section");
   myLibrary.push(book);
+  console.log(book);
   displayBook();
   form.reset();
 });
